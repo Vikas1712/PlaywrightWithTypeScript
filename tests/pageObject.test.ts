@@ -3,6 +3,7 @@ import CommonFunctions from "../page/common.page";
 import HeaderPage from "../page/Header.page";
 import LoginPage from "../page/Login.page";
 import Env from "./utils/environment";
+import * as data from "./data/login.cred.json";
 
 test.describe('TC001',()=>{
 
@@ -30,10 +31,10 @@ test.describe('TC001',()=>{
         expect(page.url()).toBe("https://letcode.in/");
         await headerPage.clickLogin();
         expect(page.url()).toBe("https://letcode.in/signin");
-        await loginPage.enterUserName('dnsvikas.wins@gmail.com');
-        await loginPage.enterPassword('Password@12345');
+        await loginPage.enterUserName(data.email);
+        await loginPage.enterPassword(data.pass);
         await loginPage.clickLoginBtn();
-        const toster=await command.toaster;
+        const toster=await command.toaster();
         expect(await toster?.textContent()).toContain("Welcome");
         await headerPage.clickSignOutLink();
     })
@@ -43,7 +44,7 @@ test.describe('TC001',()=>{
         await headerPage.clickLogin();
         expect(page.url()).toBe("https://letcode.in/signin");
         await loginPage.login('dnsvikas.wins@gmail.com','Password@12345');
-        const toster=await command.toaster;
+        const toster=await command.toaster();
         expect(await toster?.textContent()).toContain("Welcome");
         await headerPage.clickSignOutLink();
     })

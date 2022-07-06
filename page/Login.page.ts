@@ -8,12 +8,13 @@ export default class LoginPage{
         this.page=page;
     }
 
+    //eleEmailTextField =async ()=> await this.page.$("input[placeholder='Enter registered email'][name='email']");
     public get eleEmailTextField(){
-        return this.page.$("input[placeholder='Enter registered email'][name='email']")
+        return this.page.$("input[name='email']")
     }
 
     public get elePasswordTextField(){
-        return this.page.$("input[placeholder='Enter password']")
+        return this.page.$("input[name='password']")
     }
 
     public get eleLoginBtn(){
@@ -22,7 +23,9 @@ export default class LoginPage{
 
     public async enterUserName(name:string){
         const ele=await this.eleEmailTextField;
-        await ele?.fill(name);
+        if(ele !=null)
+            await ele.fill(name);
+        else throw new Error("No Element Found");    
     }
 
     public async enterPassword(pass:string){
