@@ -10,8 +10,7 @@ test.describe('TC001',()=>{
     let browser:Browser;
     let context:BrowserContext;
     let page:Page;
-
-    //Page Initialization
+    
     let headerPage:HeaderPage;
     let loginPage:LoginPage;
     let command:CommonFunctions;
