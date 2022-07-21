@@ -10,31 +10,31 @@ export default class LoginPage{
 
     //eleEmailTextField =async ()=> await this.page.$("input[placeholder='Enter registered email'][name='email']");
     public get eleEmailTextField(){
-        return this.page.$("input[name='email']")
+        return this.page.locator("input[name='email']")
     }
 
     public get elePasswordTextField(){
-        return this.page.$("input[name='password']")
+        return this.page.locator("input[name='password']")
     }
 
     public get eleLoginBtn(){
-        return this.page.$("//button[text()='LOGIN']")
+        return this.page.locator("//button[text()='LOGIN']")
     }
 
     public async enterUserName(name:string){
-        const ele=await this.eleEmailTextField;
+        const ele=this.eleEmailTextField;
         if(ele !=null)
             await ele.fill(name);
         else throw new Error("No Element Found");    
     }
 
     public async enterPassword(pass:string){
-        const ele=await this.elePasswordTextField;
-        await ele?.fill(pass);
+        const ele=this.elePasswordTextField;
+        await ele.fill(pass);
     }
 
     public async clickLoginBtn(){
-        const ele=await this.eleLoginBtn;
+        const ele=this.eleLoginBtn;
         await ele?.click();
     }
 

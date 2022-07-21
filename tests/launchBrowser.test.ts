@@ -7,15 +7,15 @@ test.beforeEach(async ({ page }) => {
 test('should able to login into application', async ({ page }) => {
     // Create one todo item.
     //await page.goto('https://letcode.in/');
-    await page.click("text=Log in");
-    await page.fill("input[name='email']",'dnsvikas.wins@gmail.com');
-    await page.fill("input[name= 'password']",'Password@12345');
-    await page.click('button:text("LOGIN")');
-    await page.click('"Sign out"');
+    await page.locator("text=Log in").click();
+    await page.locator("input[name='email']").fill('dnsvikas.wins@gmail.com');
+    await page.locator("input[name= 'password']").fill('Password@12345');
+    await page.locator('button:text("LOGIN")').click();
+    await page.locator('"Sign out"').click();
   });
 
   test('launch application', async ({ page }) => {
     // Create one todo item.
     //await page.goto('https://letcode.in/');
-    await page.click("text=Log in");
+    await page.locator("text=Log in").click();
   });

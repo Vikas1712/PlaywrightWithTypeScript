@@ -10,26 +10,26 @@ export default class HeaderPage{
 
     //Locator
     public get eleLoginBtn(){
-        const loginBtn= this.page.$("text=Log in")
+        const loginBtn= this.page.locator("text=Log in")
         if(loginBtn !=null)
             return loginBtn;
         else throw new Error("No Element");    
     }
 
     public get eleSignOutBtn(){
-        const signoutBtn= this.page.$("text=Sign out")
+        const signoutBtn= this.page.locator("text=Sign out")
         if(signoutBtn !=null)
             return signoutBtn;
         else throw new Error("No Element");    
     }
 
     public async clickLogin() {
-        const ele= await this.eleLoginBtn;
-        await ele?.click();
+        const ele= this.eleLoginBtn;
+        await ele.click();
     }
 
     public async clickSignOutLink() {
-        const ele= await this.eleSignOutBtn;
-        await ele?.click();
+        const ele= this.eleSignOutBtn;
+        await ele.click();
     }
 }
